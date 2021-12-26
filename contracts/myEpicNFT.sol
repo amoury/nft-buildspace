@@ -20,6 +20,8 @@ contract MyEpicNFT is ERC721URIStorage {
     string[] auxiliaryVerb = ["CanBe", "CouldBe", "Is", "Have", "MayBe", "MightBe", "MustBe", "Shall", "ShouldBe", "WillBe", "WouldBe"];
     string[] negativeNoun = [ "Abrasive", "Apathetic", "Controlling", "Dishonest", "Impatient", "Anxious", "Betrayed", "Disappointed", "Embarrassed", "Jealous", "Abysmal", "Bad", "Callous", "Corrosive", "Damage", "Despicable", "Enraged", "Fail", "Gawky", "Haggard", "Hurt", "Icky", "Insane", "Jealous", "Lose", "Malicious", "Naive" ];
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
     constructor() ERC721("UnicornNFT", "UNICORN") {
         console.log("This is my NFT contract. Whoa!");
     }
@@ -69,5 +71,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
       // Increment the counter for when the next NFT is minted.
       _tokenIds.increment();
+
+      emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 }
